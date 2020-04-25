@@ -2,25 +2,27 @@ function writePassword() {
 
   //prompt question and store answers
   var totalChar = parseInt(prompt("How many Characters?"));
-  while (totalChar < 8 || totalChar > 128) {
-    //newPassword = 'Password must contain atleast 8 characters and have at most 128'//this is not working right has undefinded after text
+  while (totalChar < 8 || totalChar > 128 || totalChar === isNaN(NaN)) {
+
     alert('Password must contain atleast 8 characters and have at most 128');
     totalChar = parseInt(prompt("How many Characters?"));
   }
-  var wantUpperCase = confirm("Uppercase?");
-  var wantLowerCase = confirm("Lowercase?");
-  var wantSpecialChar = confirm("Special Characters?")
-
+  var wantUpperCase = confirm("Would you like uppercase letters?");
+  var wantLowerCase = confirm("Would you like lowercase letters?");
+  var wantSpecialChar = confirm("Would you like special characters?")
+  var wantNumbers = confirm("Would you like numbers?")
 
 
   console.log('totalChar:', totalChar);
   console.log('wantUpperCase:', wantUpperCase);
   console.log('wantLowerCase:', wantLowerCase);
   console.log("wantSpecialChar: ", wantSpecialChar);
+  console.log('wantNumbers: ', wantNumbers)
   //create options arrays
   var upperCaseLetter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   var lowerCaseLetter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   var specialChar = ["!", "#", "$", "%", "&", "*", "+", "-", "<", "=", ">", "?", "@", "^", "~"]
+  var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
   //initialize variables you need to create and store new password
   var lettersArr = [];
   var newPassword = "";
@@ -34,6 +36,9 @@ function writePassword() {
   }
   if (totalChar >= 8 && totalChar <= 128 && wantSpecialChar) {
     lettersArr = lettersArr.concat(specialChar);
+  }
+  if (totalChar >= 8 && totalChar <= 128 && wantNumbers) {
+    lettersArr = lettersArr.concat(numbers);
   }
   console.log('New lettersArr:', lettersArr);
 
@@ -49,7 +54,7 @@ function writePassword() {
     console.log('newPassword: ', newPassword);
   }
   console.log('final answer: ', newPassword);
-  
+
   //update the text area with new password
   document.querySelector("#password").value = newPassword;
   // 
