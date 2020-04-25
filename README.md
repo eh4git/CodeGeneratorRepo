@@ -1,1 +1,4 @@
 # CodeGeneratorRepo
+
+~~Random Code Generator~~
+In this project I have created a random code generator. The generator creates an array based on responses to prompts. The promts ask a series of questions such as how many characters to use and what type should be used. Once the array is built a random number between one and the number of characters in the array. The character is then added to the password and the code generator loops untill the desired code lenght is reached. The first propt that asks for the amount of characters has a condition that prevents numbers less than eight and more than 128 from being accepted and alerts the required lenght before reprompting the user.
